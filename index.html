@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaPS GTPS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, red, green, blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 2rem;
+    }
+    p.description {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    .status {
+      background: #16a34a;
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      margin: 1.5rem 0;
+      font-weight: bold;
+    }
+    a.link {
+      display: inline-block;
+      margin: 1rem 0;
+      padding: 0.7rem 1.5rem;
+      background: #2563eb;
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    a.link:hover {
+      background: #1d4ed8;
+    }
+    .copy-box {
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 1rem;
+      margin: 2rem auto;
+      border-radius: 0.75rem;
+      max-width: 500px;
+      text-align: left;
+      font-family: monospace;
+      position: relative;
+    }
+    button.copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #10b981;
+      border: none;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button.copy-btn:hover {
+      background: #059669;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaPS</h1>
+  <p class="description">
+    JavaPS adalah server GTPS (Growtopia Private Server) yang dibuat untuk memberikan pengalaman bermain yang seru dan stabil.
+  </p>
+
+  <div class="status">STATUS SERVER: ONLINE</div>
+
+  <div>
+    <a class="link" href="https://sfile.mobi/9yeA3hP6fYz" target="_blank">DOWNLOAD PTUNNEL</a>
+  </div>
+
+  <div>
+    <a class="link" href="https://skyhosting.lol/ptunnel.txt" target="_blank">COPY PTUNNEL</a>
+  </div>
+
+  <div class="copy-box" id="copyBox">
+103.42.116.171 growtopia1.com<br>
+103.42.116.171 growtopia2.com<br>
+103.42.116.171 www.growtopia1.com<br>
+103.42.116.171 www.growtopia2.com
+    <button class="copy-btn" onclick="copyText()">COPY WINDOWS</button>
+  </div>
+
+  <script>
+    function copyText() {
+      const text = document.getElementById("copyBox").innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        alert("IP BERHASIL DICOPY!");
+      });
+    }
+  </script>
+</body>
+</html>
