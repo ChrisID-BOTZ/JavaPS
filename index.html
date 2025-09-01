@@ -4,112 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaPS GTPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
       text-align: center;
-      margin: 0;
-      padding: 0;
+      padding: 40px;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: #f9f9f9;
+      color: #111;
     }
     h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, red, green, blue);
+      font-size: 3em;
+      background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-top: 2rem;
+      animation: rgbText 5s infinite linear;
     }
-    p.description {
-      font-size: 1.2rem;
-      color: #cbd5e1;
-      margin: 1rem auto;
-      max-width: 600px;
+    @keyframes rgbText {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(360deg); }
     }
-    .status {
-      background: #16a34a;
+    p { font-size: 1.2em; margin-bottom: 30px; }
+    .status { background: #16a34a; display: inline-block; padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-bottom: 30px; }
+
+    /* Tombol */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
       color: white;
-      display: inline-block;
-      padding: 0.5rem 1.2rem;
-      border-radius: 9999px;
-      margin: 1.5rem 0;
+      padding: 14px 26px;
+      margin: 10px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1em;
       font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    a.link {
-      display: inline-block;
-      margin: 1rem 0;
-      padding: 0.7rem 1.5rem;
+    .btn:hover { background: linear-gradient(135deg, #3b82f6, #2563eb); transform: translateY(-3px); }
+    pre { background: #111; padding: 15px; border-radius: 8px; text-align: left; overflow-x: auto; }
+
+    /* Toast */
+    .toast { visibility: hidden; min-width: 200px; margin-left: -100px; background: #333; color: #fff; text-align: center; border-radius: 5px; padding: 12px; position: fixed; z-index: 1; left: 50%; bottom: 30px; font-size: 14px; }
+    .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+    @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+    @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+    /* Toggle */
+    #toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
       background: #2563eb;
       color: white;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    a.link:hover {
-      background: #1d4ed8;
-    }
-    .copy-box {
-      background: #1e293b;
-      color: #f1f5f9;
-      padding: 1rem;
-      margin: 2rem auto;
-      border-radius: 0.75rem;
-      max-width: 500px;
-      text-align: left;
-      font-family: monospace;
-      position: relative;
-    }
-    button.copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #10b981;
       border: none;
-      color: white;
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.5rem;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
       cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    button.copy-btn:hover {
-      background: #059669;
-    }
+    #toggle-theme:hover { background: #1e40af; }
   </style>
 </head>
 <body>
+  <button id="toggle-theme"><i class="fa-solid fa-moon"></i></button>
+
   <h1>JavaPS</h1>
-  <p class="description">
-    JavaPS adalah server GTPS (Growtopia Private Server) yang dibuat untuk memberikan pengalaman bermain yang seru dan stabil.
-  </p>
+  <p>Selamat datang di <b>GTPS Java PS</b> – server Growtopia Private elegan dan stabil untuk semua player.</p>
+  <div class="status">🟢 Server Status: ONLINE</div><br>
 
-  <div class="status">STATUS SERVER: ONLINE</div>
+  <!-- Tombol utama -->
+  <a href="https://sfile.mobi/9yeA3hP6fYz" class="btn"><i class="fa-solid fa-download"></i> DOWNLOAD PTUNNEL</a>
+  <button class="btn" onclick="copyText('https://skyhosting.lol/ptunnel.txt')"><i class="fa-solid fa-copy"></i> COPY PTUNNEL</button>
+  <a href="https://apps.apple.com/us/app/surge-5/id1442620678" class="btn"><i class="fa-brands fa-apple"></i> IOS/SURGE 5</a>
+  <button class="btn" onclick="copyText('https://skyhosting.lol/iOS')"><i class="fa-solid fa-copy"></i> COPY IOS/SURGE 5</button>
+  <button class="btn" onclick="copyText(`103.42.116.171 growtopia1.com\n103.42.116.171 growtopia2.com\n103.42.116.171 www.growtopia1.com\n103.42.116.171 www.growtopia2.com`)" ><i class="fa-solid fa-copy"></i> COPY WINDOWS</button>
 
-  <div>
-    <a class="link" href="https://sfile.mobi/9yeA3hP6fYz" target="_blank">DOWNLOAD PTUNNEL</a>
-  </div>
+  <!-- Tombol tambahan -->
+  <a href="https://discord.gg/qKsrsBXfXZ" target="_blank" class="btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
+  <a href="https://example.com" target="_blank" class="btn"><i class="fa-solid fa-globe"></i> WEBSITE OFFICIAL</a>
+  <a href="https://wa.me/6281231687347" target="_blank" class="btn"><i class="fa-solid fa-heart"></i> DONATE / SUPPORT</a>
 
-  <div>
-    <a class="link" href="https://skyhosting.lol/ptunnel.txt" target="_blank">COPY PTUNNEL</a>
-  </div>
-
-  <div>
-    <a class="link" href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank">DOWNLOAD IOS/SURGE 5</a>
-  </div>
-
-  <div class="copy-box" id="copyBox">
-103.42.116.171 growtopia1.com<br>
-103.42.116.171 growtopia2.com<br>
-103.42.116.171 www.growtopia1.com<br>
-103.42.116.171 www.growtopia2.com
-    <button class="copy-btn" onclick="copyText()">COPY WINDOWS</button>
-  </div>
+  <pre id="copyContent"></pre>
+  <div id="toast" class="toast">Copied to clipboard!</div>
 
   <script>
-    function copyText() {
-      const text = document.getElementById("copyBox").innerText.trim();
+    function copyText(text) {
       navigator.clipboard.writeText(text).then(() => {
-        alert("IP BERHASIL DICOPY!");
+        showToast();
+      }).catch(err => {
+        const el = document.getElementById('copyContent');
+        el.textContent = text;
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        try {
+          document.execCommand('copy');
+          window.getSelection().removeAllRanges();
+          showToast();
+        } catch (err2) {
+          alert("Gagal menyalin, silakan salin manual.");
+        }
       });
     }
+    function showToast() {
+      let toast = document.getElementById("toast");
+      toast.className = "toast show";
+      setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+    // Toggle theme
+    const toggleBtn = document.getElementById("toggle-theme");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      } else {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      }
+    });
   </script>
 </body>
 </html>
